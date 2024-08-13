@@ -5,10 +5,11 @@ import {
   Platform,
 } from 'react-native';
 import React from 'react';
+import {colors} from '../utils/styles';
 
 const Container = ({children}) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: colors.white, flex: 1}}>
       <KeyboardAvoidingView
         behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
         style={{flexGrow: 1}}>

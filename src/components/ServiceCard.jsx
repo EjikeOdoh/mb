@@ -2,11 +2,13 @@ import {View, Text, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {Subheading, Surface} from 'react-native-paper';
 import {moderateScale, scale} from 'react-native-size-matters';
-import {normalText, subHeading} from '../utils/styles';
+import {colors, normalText, subHeading} from '../utils/styles';
 
-const ServiceCard = ({label, icon, color}) => {
+const ServiceCard = ({label, icon, color, onPress}) => {
   return (
-    <TouchableOpacity style={{width: scale(150)}}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={{overflow: 'hidden', borderRadius: scale(10)}}>
       <Surface
         style={{
           width: scale(140),
@@ -15,10 +17,14 @@ const ServiceCard = ({label, icon, color}) => {
           alignItems: 'center',
           padding: scale(10),
           gap: 10,
-          marginBottom: moderateScale(20),
+          backgroundColor: colors.gray,
         }}>
         <View
-          style={{padding: scale(10), backgroundColor: color, borderRadius: 8}}>
+          style={{
+            padding: scale(10),
+            backgroundColor: color,
+            borderRadius: scale(5),
+          }}>
           <Image source={icon} />
         </View>
         <Text

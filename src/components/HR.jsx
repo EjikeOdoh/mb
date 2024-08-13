@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import {Divider} from 'react-native-paper';
 import {normalText} from '../utils/styles';
-import {scale} from 'react-native-size-matters';
+import {scale, verticalScale} from 'react-native-size-matters';
 
 const HR = ({label}) => {
   return (
@@ -18,9 +18,9 @@ const HR = ({label}) => {
           position: 'absolute',
           alignSelf: 'center',
           backgroundColor: 'white',
-          top: -5,
+          top: verticalScale(-12),
           zIndex: 2,
-          paddingHorizontal: 5,
+          paddingHorizontal: scale(5),
         }}>
         <Text style={normalText}>{label}</Text>
       </View>

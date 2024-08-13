@@ -9,7 +9,7 @@ import {
 } from '../utils/validators';
 import {errorText, normalText} from '../utils/styles';
 
-const Input = ({label, type}) => {
+const Input = ({label, type, placeholder, getText}) => {
   const [text, setText] = React.useState('');
   const [error, setError] = React.useState(null);
 
@@ -58,7 +58,8 @@ const Input = ({label, type}) => {
       <TextInput
         style={normalText}
         contentStyle={normalText}
-        placeholder={label}
+        placeholder={placeholder}
+        label={label}
         value={text}
         onChangeText={onChangeText}
         onBlur={() => validate(text)}
