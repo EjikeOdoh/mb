@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Container from '../../components/Container';
 import {colors, heading, normalText, subHeading} from '../../utils/styles';
@@ -12,7 +12,9 @@ import {
   selectCurrentService,
   selectServices,
   setSelectedService,
+  setServices,
 } from '../../redux/slices/serviceSlice';
+import api from '../../utils/api';
 
 const Home = () => {
   const {navigate} = useNavigation();
@@ -23,6 +25,19 @@ const Home = () => {
     dispatch(setSelectedService(id));
     navigate('Service');
   };
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const {data} = await api.get('/services');
+        dispatch(setServices(data));
+      } catch (error) {
+        console.log({...error});
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   return (
     <Container>

@@ -6,9 +6,12 @@ import {colors, heading, normalText} from '../../utils/styles';
 import Button from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
 import {verticalScale} from 'react-native-size-matters';
+import {useDispatch} from 'react-redux';
+import {setServices} from '../../redux/slices/serviceSlice';
 
 const SignIn = () => {
   const {navigate} = useNavigation();
+  const dispatch = useDispatch();
 
   const register = () => {
     navigate('SignUp');
@@ -17,7 +20,14 @@ const SignIn = () => {
   const forgotPassword = () => navigate('ForgotPassword');
 
   const signIn = async () => {
-    await navigate('Main', {screen: 'Home'});
+    try {
+      navigate('Main', {screen: 'Home'});
+      const data = await api.get('/services');
+      console.log(data);
+      dispatch(setServices(data));
+    } catch (error) {
+      console.log({...error});
+    }
   };
 
   return (

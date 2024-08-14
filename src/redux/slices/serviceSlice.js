@@ -1,8 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {services} from '../../data';
 
 const initialState = {
-  services,
+  services: [],
   selectedService: {},
 };
 
