@@ -3,9 +3,10 @@ import React from 'react';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {colors} from '../utils/styles';
 
-const GoogleBtn = () => {
+const GoogleBtn = ({onPress}) => {
   return (
     <TouchableOpacity
+      onPress={onPress}
       style={{
         flexDirection: 'row',
         justifyContent: 'center',

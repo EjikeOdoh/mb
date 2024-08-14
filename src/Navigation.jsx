@@ -14,6 +14,9 @@ import {colors, tinyText} from './utils/styles';
 import ChatScreen from './screens/chat/ChatScreen';
 import Details from './screens/services/Details';
 import Process from './screens/services/Process';
+import AddPassword from './screens/auth/AddPassword';
+import ForgotPassword from './screens/auth/ForgotPassword';
+import CheckEmail from './screens/auth/CheckEmail';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,6 +29,9 @@ const AuthScreens = () => {
       }}>
       <Stack.Screen name="Login" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="AddPassword" component={AddPassword} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <Stack.Screen name="CheckEmail" component={CheckEmail} />
     </Stack.Navigator>
   );
 };

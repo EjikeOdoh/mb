@@ -28,6 +28,10 @@ const SignUp = () => {
     await navigate('Main', {screen: 'Home'});
   };
 
+  const signUpWithGoogle = async () => {
+    navigate('AddPassword');
+  };
+
   return (
     <Container>
       <View style={{marginVertical: 40}}>
@@ -76,7 +80,7 @@ const SignUp = () => {
 
       <HR label="OR" />
 
-      <GoogleBtn />
+      <GoogleBtn onPress={signUpWithGoogle} />
     </Container>
   );
 };

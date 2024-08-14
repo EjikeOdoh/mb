@@ -5,6 +5,7 @@ import Input from '../../components/Input';
 import {colors, heading, normalText} from '../../utils/styles';
 import Button from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
+import {verticalScale} from 'react-native-size-matters';
 
 const SignIn = () => {
   const {navigate} = useNavigation();
@@ -12,6 +13,8 @@ const SignIn = () => {
   const register = () => {
     navigate('SignUp');
   };
+
+  const forgotPassword = () => navigate('ForgotPassword');
 
   const signIn = async () => {
     await navigate('Main', {screen: 'Home'});
@@ -27,25 +30,35 @@ const SignIn = () => {
           marginTop: 40,
         }}>
         <Image source={require('../../assets/image/logo.png')} />
-        <Text style={heading}>mbtronics</Text>
+      </View>
+      <View>
+        <Text style={heading}>Mbtronics</Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text style={normalText}>Don't have an account? </Text>
+          <TouchableOpacity onPress={register}>
+            <Text style={{...normalText, color: colors.blue}}>Sign up</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={{marginVertical: 40}}>
         <Input label="Phone Number" type="phone" />
         <Input label="Password" type="password" />
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-          }}>
-          <Text style={normalText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={register}>
-            <Text style={{...normalText, color: colors.blue}}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
       </View>
 
       <Button label="Log in" onPress={signIn} />
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          marginVertical: verticalScale(20),
+        }}>
+        <TouchableOpacity onPress={forgotPassword}>
+          <Text style={{...normalText, color: colors.blue}}>
+            Forgot Password?
+          </Text>
+        </TouchableOpacity>
+      </View>
     </Container>
   );
 };
